@@ -2,7 +2,6 @@ package edu.javacourse.studentorder.domain;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class StudentOrder {
@@ -12,7 +11,7 @@ public class StudentOrder {
     private List <Child> children;
     private String MarriagesCertificateID;
     private LocalDate MarriagesDate;
-    private String MarriagesOffice;
+    private RegisterOffice MarriagesOffice;
 
     public long getStudentOrderID() {
         return studentOrderID;
@@ -65,11 +64,11 @@ public class StudentOrder {
         MarriagesDate = marriagesDate;
     }
 
-    public String getMarriagesOffice() {
+    public RegisterOffice getMarriagesOffice() {
         return MarriagesOffice;
     }
 
-    public void setMarriagesOffice(String marriagesOffice) {
+    public void setMarriagesOffice(RegisterOffice marriagesOffice) {
         MarriagesOffice = marriagesOffice;
     }
 }
