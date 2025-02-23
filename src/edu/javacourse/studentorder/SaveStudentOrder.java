@@ -1,6 +1,8 @@
 package edu.javacourse.studentorder;
 
 import edu.javacourse.studentorder.dao.DictionaryDaoImpl;
+import edu.javacourse.studentorder.dao.StudentDaoImpl;
+import edu.javacourse.studentorder.dao.StudentOrderDao;
 import edu.javacourse.studentorder.domain.*;
 
 import java.time.LocalDate;
@@ -8,20 +10,30 @@ import java.util.List;
 
 public class SaveStudentOrder {
     public static void main(String[] args) throws Exception {
-        List<Street> streets = new DictionaryDaoImpl().findStreets("про");
-        for (Street street : streets) {
-            System.out.println(street.getStreetName());
-        }
+//        List<Street> streets = new DictionaryDaoImpl().findStreets("про");
+//        for (Street street : streets) {
+//            System.out.println(street.getStreetName());
+//        }
+//
+//        List<PassportOffice> passportOffices = new DictionaryDaoImpl().findPassportOffices("010020000000");
+//        for (PassportOffice passportOffice : passportOffices) {
+//            System.out.println(passportOffice.getOfficeName());
+//        }
+//
+//        List<RegisterOffice> registerOffices = new DictionaryDaoImpl().findPRegisterOffices("010010000000");
+//        for (RegisterOffice registerOffice : registerOffices) {
+//            System.out.println(registerOffice.getOfficeName());
+//        }
+//
+//        List<CountryArea> countryAreas1 = new DictionaryDaoImpl().findAreas("020020020000");
+//        for (CountryArea countryArea : countryAreas1) {
+//            System.out.println(countryArea);
+//        }
 
-        List<PassportOffice> passportOffices = new DictionaryDaoImpl().findPassportOffices("010020000000");
-        for (PassportOffice passportOffice : passportOffices) {
-            System.out.println(passportOffice.getOfficeName());
-        }
-
-        List<RegisterOffice> registerOffices = new DictionaryDaoImpl().findPRegisterOffices("010010000000");
-        for (RegisterOffice registerOffice : registerOffices) {
-            System.out.println(registerOffice.getOfficeName());
-        }
+        StudentOrder studentOrder = buildStudentOrder(10);
+        StudentOrderDao dao = new StudentDaoImpl();
+        Long id = dao.saveStudentOrder(studentOrder);
+        System.out.println(id);
     }
 
     public static long saveStudentOrder(StudentOrder so) {
@@ -37,8 +49,8 @@ public class SaveStudentOrder {
         so.setMarriagesDate(LocalDate.of(2016,6,16));
         so.setMarriagesOffice(new RegisterOffice(1L, "", ""));
 
-        Street street = new Street(999L, "First street");
-        Address address = new Address("195000", street,"15","","101");
+        Street street = new Street(1L, "First street");
+        Address address = new Address("195000", street,"12","","142");
 
         // Муж
         Adult husband = new Adult("Петров", "Виктор", "Сергеевич"
@@ -77,6 +89,7 @@ public class SaveStudentOrder {
         so.setWife(wife);
         so.addChildren(child1);
         so.addChildren(child2);
+
         return so;
     }
 }
