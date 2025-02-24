@@ -1,12 +1,10 @@
 package edu.javacourse.studentorder;
 
-import edu.javacourse.studentorder.dao.DictionaryDaoImpl;
-import edu.javacourse.studentorder.dao.StudentDaoImpl;
+import edu.javacourse.studentorder.dao.StudentOrderDaoImpl;
 import edu.javacourse.studentorder.dao.StudentOrderDao;
 import edu.javacourse.studentorder.domain.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class SaveStudentOrder {
     public static void main(String[] args) throws Exception {
@@ -31,7 +29,7 @@ public class SaveStudentOrder {
 //        }
 
         StudentOrder studentOrder = buildStudentOrder(10);
-        StudentOrderDao dao = new StudentDaoImpl();
+        StudentOrderDao dao = new StudentOrderDaoImpl();
         Long id = dao.saveStudentOrder(studentOrder);
         System.out.println(id);
     }
